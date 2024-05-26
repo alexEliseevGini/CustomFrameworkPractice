@@ -4,20 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "CustomFrameworkPractice",
+    name: "CustomFramework",
+    platforms: [
+        .macOS(.v12), .iOS(.v15)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "CustomFrameworkPractice",
-            targets: ["CustomFrameworkPractice"]),
+            name: "CustomFramework",
+            targets: ["CustomFramework"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "CustomFrameworkPractice"),
-        .testTarget(
-            name: "CustomFrameworkPracticeTests",
-            dependencies: ["CustomFrameworkPractice"]),
+        .binaryTarget(
+            name: "CustomFramework",
+            path: "./Sources/CustomFramework.xcframework"
+        )
     ]
 )
